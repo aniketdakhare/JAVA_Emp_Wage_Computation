@@ -2,20 +2,20 @@ import java.util.Random;
 
 public class EmployeeWage
 {
-	static final int WAGE_PER_HOUR=20;
-	static final int WORKING_DAYS=20;
 	static final int FULLTIME=1;
 	static final int PARTTIME=2;
-	static int daily_hours=8;
-	static int perDayWage;
-	static int empWageperMonth;
+	static final int WAGE_PER_HOUR=20;
+	static final int WORKING_DAYS=20;
+	static final int MAX_HOURS=100;
 
 	public static void main(String[] args)
 	{
 		System.out.println("Welcome to Employee Wage Computation Program");
+		int daily_hours=0, totalEmpHours=0, totalWorkingDays=0;
 		Random r = new Random();
-		for (int i = 0; i < WORKING_DAYS; i++)
+		while (totalEmpHours < MAX_HOURS && totalWorkingDays < WORKING_DAYS )
 		{
+			totalWorkingDays++;
 			int check = r.nextInt(3);
 			switch (check)
 			{
@@ -28,9 +28,9 @@ public class EmployeeWage
 				default:
 					daily_hours=0;
 			}
-			perDayWage=daily_hours*WAGE_PER_HOUR;
-			empWageperMonth+=perDayWage;
+			totalEmpHours+=daily_hours;
 		}
+		int empWageperMonth=totalEmpHours*WAGE_PER_HOUR;
 		System.out.println("Monthly salary of an employee is Rs. "+empWageperMonth);
 	}
 }
