@@ -7,10 +7,8 @@ public class EmployeeWage
 	static final int WAGE_PER_HOUR=20;
 	static final int WORKING_DAYS=20;
 	static final int MAX_HOURS=100;
-
-	public static void main(String[] args)
+	void salary()
 	{
-		System.out.println("Welcome to Employee Wage Computation Program");
 		int daily_hours=0, totalEmpHours=0, totalWorkingDays=0;
 		Random r = new Random();
 		while (totalEmpHours < MAX_HOURS && totalWorkingDays < WORKING_DAYS )
@@ -32,5 +30,11 @@ public class EmployeeWage
 		}
 		int empWageperMonth=totalEmpHours*WAGE_PER_HOUR;
 		System.out.println("Monthly salary of an employee is Rs. "+empWageperMonth);
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("Welcome to Employee Wage Computation Program");
+		EmployeeWage emp=new EmployeeWage();
+		emp.salary();
 	}
 }
