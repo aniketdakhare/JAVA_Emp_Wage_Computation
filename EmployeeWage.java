@@ -13,19 +13,18 @@ public class EmployeeWage
 		System.out.println("Welcome to Employee Wage Computation Program");
 		Random r = new Random();
                 int check = r.nextInt(3);
-                if (check == FULLTIME)
-                {
-                        daily_hours=8;
-                }
-		else if (check == PARTTIME)
+                switch (check)
 		{
-			daily_hours=4;
+			case FULLTIME:
+				daily_hours=8;
+				break;
+			case PARTTIME:
+				daily_hours=4;
+				break;
+			default:
+				System.out.println("Employee is Absent");
+				daily_hours=0;
 		}
-                else
-                {
-                        System.out.println("Employee is Absent");
-                        daily_hours=0;
-                }
                 perDayWage=daily_hours*WAGE_PER_HOUR;
                 System.out.println("Per day salary of an employee is Rs. "+perDayWage);
 	}
