@@ -1,31 +1,31 @@
-import java.util.Random;
+import java.util.*;
 
 public class EmployeeWage implements EmpWageInterface
 {
 	public static final int FULLTIME=1;
 	public static final int PARTTIME=2;
 
-	private int numofCompany=0;
-	private CompanyEmployeeWage[] empWageArray;
+	private LinkedList<CompanyEmployeeWage> empWageList;
 
 	public EmployeeWage()
 	{
-		empWageArray=new CompanyEmployeeWage[5];
+		empWageList=new LinkedList<CompanyEmployeeWage>();
 	}
 
 	public void addCompanyEmpWage(String company, int wage_per_hour, int working_days, int max_hour)
 	{
-		empWageArray[numofCompany]=new CompanyEmployeeWage(company, wage_per_hour, working_days, max_hour);
-		numofCompany++;
+		CompanyEmployeeWage companyEmployeeWage=new CompanyEmployeeWage(company, wage_per_hour, working_days, max_hour);
+		empWageList.add(companyEmployeeWage);
 	}
 
 	public void computeEmpWage()
 	{
-		for (int i = 0; i < numofCompany; i++)
+		for (int i = 0; i < empWageList.size(); i++)
 		{
-			empWageArray[i].setEmpWageperMonth(this.computeEmpWage(empWageArray[i]));
-			System.out.println(empWageArray[i]);
+			CompanyEmployeeWage companyEmployeeWage=empWageList.get(i);
+			companyEmployeeWage.setEmpWageperMonth(this.computeEmpWage(companyEmployeeWage));
 		}
+		System.out.println(empWageList);
 	}
 
 	public int computeEmpWage(CompanyEmployeeWage companyEmployeeWage)
