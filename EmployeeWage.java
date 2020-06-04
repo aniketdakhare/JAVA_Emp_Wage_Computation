@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class EmployeeWage
+public class EmployeeWage implements EmpWageInterface
 {
 	public static final int FULLTIME=1;
 	public static final int PARTTIME=2;
@@ -13,13 +13,13 @@ public class EmployeeWage
 		empWageArray=new CompanyEmployeeWage[5];
 	}
 
-	private void addCompanyEmpWage(String company, int wage_per_hour, int working_days, int max_hour)
+	public void addCompanyEmpWage(String company, int wage_per_hour, int working_days, int max_hour)
 	{
 		empWageArray[numofCompany]=new CompanyEmployeeWage(company, wage_per_hour, working_days, max_hour);
 		numofCompany++;
 	}
 
-	private void computeEmpWage()
+	public void computeEmpWage()
 	{
 		for (int i = 0; i < numofCompany; i++)
 		{
@@ -28,7 +28,7 @@ public class EmployeeWage
 		}
 	}
 
-	private int computeEmpWage(CompanyEmployeeWage companyEmployeeWage)
+	public int computeEmpWage(CompanyEmployeeWage companyEmployeeWage)
 	{
 		int daily_hours=0, totalEmpHours=0, totalWorkingDays=0;
 		Random r = new Random();
@@ -61,4 +61,3 @@ public class EmployeeWage
 		emp.computeEmpWage();
 	}
 }
-
