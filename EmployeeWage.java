@@ -6,16 +6,19 @@ public class EmployeeWage implements EmpWageInterface
 	public static final int PARTTIME=2;
 
 	private LinkedList<CompanyEmployeeWage> empWageList;
+	private Map<String, CompanyEmployeeWage> companyToEmoWageMap;
 
 	public EmployeeWage()
 	{
 		empWageList=new LinkedList<CompanyEmployeeWage>();
+		companyToEmoWageMap = new HashMap<String, CompanyEmployeeWage>();
 	}
 
 	public void addCompanyEmpWage(String company, int wage_per_hour, int working_days, int max_hour)
 	{
 		CompanyEmployeeWage companyEmployeeWage=new CompanyEmployeeWage(company, wage_per_hour, working_days, max_hour);
 		empWageList.add(companyEmployeeWage);
+		companyToEmoWageMap.put(company, companyEmployeeWage);
 	}
 
 	public void computeEmpWage()
@@ -24,6 +27,7 @@ public class EmployeeWage implements EmpWageInterface
 		{
 			CompanyEmployeeWage companyEmployeeWage=empWageList.get(i);
 			companyEmployeeWage.setEmpWageperMonth(this.computeEmpWage(companyEmployeeWage));
+			System.out.println(companyToEmoWageMap.get(companyEmployeeWage.COMPANY));
 		}
 		System.out.println(empWageList);
 	}
