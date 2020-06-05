@@ -27,9 +27,14 @@ public class EmployeeWage implements EmpWageInterface
 		{
 			CompanyEmployeeWage companyEmployeeWage=empWageList.get(i);
 			companyEmployeeWage.setEmpWageperMonth(this.computeEmpWage(companyEmployeeWage));
-			System.out.println(companyToEmoWageMap.get(companyEmployeeWage.COMPANY));
 		}
 		System.out.println(empWageList);
+	}
+
+	@Override
+	public int getTotalWage(String company)
+	{
+			return companyToEmoWageMap.get(company).empWageperMonth;
 	}
 
 	public int computeEmpWage(CompanyEmployeeWage companyEmployeeWage)
@@ -63,5 +68,7 @@ public class EmployeeWage implements EmpWageInterface
 		emp.addCompanyEmpWage("Relience Fresh",25,20,96);
 		emp.addCompanyEmpWage("Dmart",20,22,104);
 		emp.computeEmpWage();
+		System.out.println("Monthly Employee wage of Dmart is Rs. "+emp.getTotalWage("Dmart"));
+		System.out.println("Monthly Employee wage of Relience Fresh is Rs. "+emp.getTotalWage("Relience Fresh"));
 	}
 }
