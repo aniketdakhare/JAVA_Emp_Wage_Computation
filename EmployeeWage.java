@@ -63,7 +63,7 @@ public class EmployeeWage implements EmpWageInterface
 
 	public static void main(String[] args)
 	{
-		System.out.println("Welcome to Employee Wage Computation Program");
+		System.out.println("Welcome To Employee Wage Computation Program");
 		EmployeeWage emp=new EmployeeWage();
 		emp.addCompanyEmpWage("Relience Fresh",25,20,96);
 		emp.addCompanyEmpWage("Dmart",20,22,104);
